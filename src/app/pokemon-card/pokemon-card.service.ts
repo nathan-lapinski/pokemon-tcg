@@ -13,9 +13,17 @@ export class PokemonCardService {
 
   constructor(private urlBuilderService: UrlBuilderService) { }
 
-  // TODO: For now, this function is hardcoded to return card data by name.
-  get(name: string): Observable<any> {
+  // TODO: Both of these get methods are kind of gross and should be reconsidered. It could be problematic
+  // to have a different get method for each type of resource.
+  getCardsByName(name: string): Observable<any> {
     const url = this.urlBuilderService.buildUrl(name);
+    return ajax.get(url).pipe(
+      map(res => res.response.cards)
+    );
+  }
+
+  getCardsBySet(set: string): Observable<any> {
+    const url = this.urlBuilderService.buildSetUrl(set);
     return ajax.get(url).pipe(
       map(res => res.response.cards)
     );

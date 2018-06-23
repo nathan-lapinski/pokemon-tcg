@@ -2,6 +2,7 @@
   pokemon-card-dashboard
 </p>
 <input placeholder="pokemon name" (keyup.enter)="fetchPokemon($event.target.value)"/>
+<input placeholder="set name" (keyup.enter)="fetchPokemonBySet($event.target.value)"/>
 <ul class="card-list">
   <li class="card" *ngFor="let c of cards">
     <app-card [card]="c"></app-card>

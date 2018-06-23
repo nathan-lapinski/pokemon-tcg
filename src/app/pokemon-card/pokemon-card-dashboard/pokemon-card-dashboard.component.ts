@@ -16,7 +16,13 @@ export class PokemonCardDashboardComponent implements OnInit {
   ngOnInit() {}
 
   public fetchPokemon(name: string): void {
-    this.cardService.get(name).subscribe(cards => {
+    this.cardService.getCardsByName(name).subscribe(cards => {
+      this.cards = cards;
+    });
+  }
+
+  public fetchPokemonBySet(set: string): void {
+    this.cardService.getCardsBySet(set).subscribe(cards => {
       this.cards = cards;
     });
   }
