@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonCardService } from '../pokemon-card.service';
 import { TestPokemonDataService } from '../test-pokemon-data.service';
 
+
+function remove(item: string, list: string[]) {
+  if (list.indexOf(item) !== -1) {
+    list.splice(list.indexOf(item), 1);
+  }
+}
+
 @Component({
   selector: 'app-pokemon-card-dashboard',
   templateUrl: './pokemon-card-dashboard.component.html',
@@ -40,6 +47,21 @@ export class PokemonCardDashboardComponent implements OnInit {
     this.cardService.getCardsBySet(set).subscribe(cards => {
       this.cards = cards;
     });
+  }
+
+  // Experimental drag/drop lib test
+  // TODO: This all needs to be refactored
+
+  dropzone1 = [
+  ];
+
+  currentBox?: string;
+
+  public move(box: string, toList: string[]): void {
+    remove(box, this.cards);
+    remove(box, this.dropzone1);
+
+    toList.push(box);
   }
 
 }

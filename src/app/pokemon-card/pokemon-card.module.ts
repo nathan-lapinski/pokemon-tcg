@@ -4,9 +4,12 @@ import { PokemonCardDashboardComponent } from './pokemon-card-dashboard/pokemon-
 import { CardComponent } from './card/card.component';
 import { SharedModule } from '../shared/shared.module';
 
+import { DraggableModule } from '../draggable/draggable.module';
+
 @NgModule({
   imports: [
     CommonModule,
+    DraggableModule,
     SharedModule
   ],
   declarations: [PokemonCardDashboardComponent, CardComponent],

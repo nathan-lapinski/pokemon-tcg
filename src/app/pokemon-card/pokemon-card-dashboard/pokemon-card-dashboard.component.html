@@ -5,8 +5,24 @@
 <input placeholder="set name" (keyup.enter)="fetchPokemonBySet($event.target.value)"/>
 <button (click)="fetchTestData()">Base Set</button>
 <button (click)="fetchTestPack()">Generate Pack</button>
+
+<!-- Experimental. Testing drag/drop lib-->
+
+
 <ul class="card-list">
-  <li class="card" *ngFor="let c of cards">
+  <li *ngFor="let c of cards" appDroppable (dragStart)="currentBox = c" class="box card">
     <app-card [card]="c"></app-card>
+    <div class="box box-helper" *appDraggableHelper><app-card [card]="c"></app-card></div>
   </li>
 </ul>
+
+
+<h3>Selected Pokemon</h3>
+<div class="dropzone" appDropzone (drop)="move(currentBox, dropzone1)"
+     (remove)="move(currentBox, cards)">
+  <div *ngFor="let box of dropzone1" class="box"
+       appDroppable (dragStart)="currentBox = box">
+       <app-card [card]="box"></app-card>
+    <div class="box" *appDraggableHelper><app-card [card]="box"></app-card></div>
+  </div>
+</div>
