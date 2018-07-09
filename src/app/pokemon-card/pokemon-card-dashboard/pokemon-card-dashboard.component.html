@@ -1,13 +1,12 @@
-<p>
-  pokemon-card-dashboard
-</p>
 <input placeholder="pokemon name" (keyup.enter)="fetchPokemon($event.target.value)"/>
 <input placeholder="set name" (keyup.enter)="fetchPokemonBySet($event.target.value)"/>
 <button (click)="fetchTestData()">Base Set</button>
 <button (click)="fetchTestPack()">Generate Pack</button>
 
 <!-- Experimental. Testing drag/drop lib-->
+<app-selected-pokemon-card-info [selectedPokemon]="currentBox">
 
+</app-selected-pokemon-card-info>
 <h3>Pokemon Packs</h3>
 <ul class="card-list">
   <li *ngFor="let c of cards" appDroppable (dragStart)="currentBox = c" class="box card">

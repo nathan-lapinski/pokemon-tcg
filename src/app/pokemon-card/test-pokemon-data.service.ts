@@ -30,17 +30,37 @@ export class TestPokemonDataService {
         rares = rares[Math.floor(Math.random() * (rares.length))];
 
         let alluncommons = this.testData.filter(card => card.rarity === 'Uncommon');
-        uncommons.push(alluncommons[Math.floor(Math.random() * (alluncommons.length))]);
-        uncommons.push(alluncommons[Math.floor(Math.random() * (alluncommons.length))]);
-        uncommons.push(alluncommons[Math.floor(Math.random() * (alluncommons.length))]);
+        let selectedUncommonIndex = Math.floor(Math.random() * (alluncommons.length))
+        uncommons.push(alluncommons[selectedUncommonIndex]);
+        alluncommons.splice(selectedUncommonIndex,1);
+        selectedUncommonIndex = Math.floor(Math.random() * (alluncommons.length));
+        uncommons.push(alluncommons[selectedUncommonIndex]);
+        alluncommons.splice(selectedUncommonIndex,1);
+        selectedUncommonIndex = Math.floor(Math.random() * (alluncommons.length));
+        uncommons.push(alluncommons[selectedUncommonIndex]);
+
 
         let allcommons = this.testData.filter(card => card.rarity === 'Common' && card.supertype !== 'Energy');
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
-        commons.push(allcommons[Math.floor(Math.random() * (allcommons.length))]);
+        let selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+
+        commons.push(allcommons[selectedCommonIndex]);
+        allcommons.splice(selectedCommonIndex,1);
+        selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+
+        commons.push(allcommons[selectedCommonIndex]);
+        allcommons.splice(selectedCommonIndex,1);
+        selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+
+        commons.push(allcommons[selectedCommonIndex]);
+        allcommons.splice(selectedCommonIndex,1);
+        selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+        commons.push(allcommons[selectedCommonIndex]);
+        allcommons.splice(selectedCommonIndex,1);
+        selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+        commons.push(allcommons[selectedCommonIndex]);
+        allcommons.splice(selectedCommonIndex,1);
+        selectedCommonIndex = Math.floor(Math.random() * (allcommons.length));
+        commons.push(allcommons[selectedCommonIndex]);
 
         energy = this.testData.filter(card => card.supertype === 'Energy' && card.rarity === 'Common');
         energy = energy[Math.floor(Math.random() * (energy.length))];        

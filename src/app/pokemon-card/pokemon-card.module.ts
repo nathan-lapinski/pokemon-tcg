@@ -5,6 +5,7 @@ import { CardComponent } from './card/card.component';
 import { SharedModule } from '../shared/shared.module';
 
 import { DraggableModule } from '../draggable/draggable.module';
+import { SelectedPokemonCardInfoComponent } from './selected-pokemon-card-info/selected-pokemon-card-info.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { DraggableModule } from '../draggable/draggable.module';
     DraggableModule,
     SharedModule
   ],
-  declarations: [PokemonCardDashboardComponent, CardComponent],
+  declarations: [PokemonCardDashboardComponent, CardComponent, SelectedPokemonCardInfoComponent],
   exports: [PokemonCardDashboardComponent]
 })
 export class PokemonCardModule { }
