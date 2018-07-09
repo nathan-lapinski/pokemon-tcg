@@ -33,7 +33,7 @@ export class PokemonCardDashboardComponent implements OnInit {
 
   public fetchTestPack(): void {
     this.testDataService.getPack().subscribe(cards => {
-      this.cards = cards;
+      this.cards = this.cards.concat(cards);
     });
   }
 
@@ -52,14 +52,14 @@ export class PokemonCardDashboardComponent implements OnInit {
   // Experimental drag/drop lib test
   // TODO: This all needs to be refactored
 
-  dropzone1 = [
+  dropzone = [
   ];
 
   currentBox?: string;
 
   public move(box: string, toList: string[]): void {
     remove(box, this.cards);
-    remove(box, this.dropzone1);
+    remove(box, this.dropzone);
 
     toList.push(box);
   }
