@@ -3,25 +3,27 @@
 <button (click)="fetchTestData()">Base Set</button>
 <button (click)="fetchTestPack()">Generate Pack</button>
 
-<!-- Experimental. Testing drag/drop lib-->
-<app-selected-pokemon-card-info [selectedPokemon]="currentBox">
-
-</app-selected-pokemon-card-info>
-<h3>Pokemon Packs</h3>
-<ul class="card-list">
-  <li *ngFor="let c of cards" appDroppable (dragStart)="currentBox = c" class="box card">
-    <app-card [card]="c"></app-card>
-    <div class="box box-helper" *appDraggableHelper><app-card [card]="c"></app-card></div>
-  </li>
-</ul>
-
-
-<h3>Selected Pokemon - {{dropzone.length}}</h3>
-<div class="dropzone" appDropzone (drop)="move(currentBox, dropzone)"
-     (remove)="move(currentBox, cards)">
-  <div *ngFor="let box of dropzone" class="box"
-       appDroppable (dragStart)="currentBox = box">
-       <app-card [card]="box"></app-card>
-    <div class="box" *appDraggableHelper><app-card [card]="box"></app-card></div>
+<div class="container" style="width:1000px">
+  <div style="float:right; width:300px">
+      <app-selected-pokemon-card-info [selectedPokemon]="currentBox"></app-selected-pokemon-card-info>
+  </div>
+  <div style="float:left; width:600px;">
+      <h3>Pokemon Packs</h3>
+      <ul class="card-list">
+        <li *ngFor="let c of cards" appDroppable (dragStart)="currentBox = c" class="box card">
+          <app-card [card]="c"></app-card>
+          <div class="box box-helper" *appDraggableHelper><app-card [card]="c"></app-card></div>
+        </li>
+      </ul>
+      
+      <h3>Selected Pokemon - {{dropzone.length}}</h3>
+      <div class="dropzone" appDropzone (drop)="move(currentBox, dropzone)"
+           (remove)="move(currentBox, cards)">
+        <div *ngFor="let box of dropzone" class="box"
+             appDroppable (dragStart)="currentBox = box">
+             <app-card [card]="box"></app-card>
+          <div class="box" *appDraggableHelper><app-card [card]="box"></app-card></div>
+        </div>
+      </div>
   </div>
 </div>
