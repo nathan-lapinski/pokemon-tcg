@@ -49,8 +49,11 @@ export class PokemonCardDashboardComponent implements OnInit {
     });
   }
 
-  // Experimental drag/drop lib test
-  // TODO: This all needs to be refactored
+  // TODO: Should probably find a better home for these guys, or pass a sort function into Array.prototype.sort
+  public sortByType(): void {
+    // TODO: Implement
+  }
+
 
   dropzone = [
   ];
