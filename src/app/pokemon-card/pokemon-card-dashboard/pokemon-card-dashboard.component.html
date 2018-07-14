@@ -11,7 +11,7 @@
     <h3>Pokemon Packs</h3>
     <ul class="card-list">
       <li *ngFor="let c of cards" appDroppable (dragStart)="currentBox = c" class="box card">
-        <app-card [card]="c"></app-card>
+        <app-card [card]="c" [width]="60" [height]="83"></app-card>
         <div class="box box-helper" *appDraggableHelper><app-card [card]="c"></app-card></div>
       </li>
     </ul>
@@ -26,7 +26,7 @@
       (remove)="move(currentBox, cards)">
     <div *ngFor="let box of dropzone" class="box"
         appDroppable (dragStart)="currentBox = box">
-        <app-card [card]="box"></app-card>
+        <app-card [card]="box" [width]="60" [height]="83"></app-card>
       <div class="box" *appDraggableHelper><app-card [card]="box"></app-card></div>
     </div>
   </div>
