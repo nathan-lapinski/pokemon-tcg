@@ -60,9 +60,14 @@ export class PokemonCardDashboardComponent implements OnInit {
 
   currentBox?: string;
 
+  // TODO: Need to rename these params. Box is the card, and toList is the array that it's being sent to
   public move(box: string, toList: string[]): void {
-    remove(box, this.cards);
-    remove(box, this.dropzone);
+
+    if (toList === this.dropzone) {
+      remove(box, this.cards);
+    } else {
+      remove(box, this.dropzone);
+    }
 
     toList.push(box);
   }
