@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonCardService } from '../pokemon-card.service';
 import { TestPokemonDataService } from '../test-pokemon-data.service';
+import { createRendererV1 } from '../../../../node_modules/@angular/core/src/view/refs';
 
 
 function remove(item: string, list: string[]) {
@@ -50,8 +51,50 @@ export class PokemonCardDashboardComponent implements OnInit {
   }
 
   // TODO: Should probably find a better home for these guys, or pass a sort function into Array.prototype.sort
-  public sortByType(): void {
-    // TODO: Implement
+  public sortBySuperType(): void {
+    const superTypeTable = {
+      'Pokémon': 0,
+      'Trainer': 1,
+      'Energy': 2
+    };
+
+    this.cards.sort((card1, card2) => {
+      return superTypeTable[card1.supertype] - superTypeTable[card2.supertype];
+    }); 
+  }
+
+  // TODO: This is a festering pile of ineffeciency. Also, it will break with newer versions of the game, which have more color/types
+  public sortByColor(): void {
+    const pokemonColorTable = {
+      'Colorless': 0,
+      'Fighting': 1,
+      'Fire': 2,
+      'Grass': 3,
+      'Lightning': 4,
+      'Psychic': 5,
+      'Water': 6
+    };
+
+    this.sortBySuperType();
+    this.cards.sort((card1, card2) => {
+      if (card1.types && card2.types) {
+        return pokemonColorTable[card1.types[0]] - pokemonColorTable[card2.types[0]];
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  public sortByRarity(): void {
+    const rarityTable = {
+      'Rare': 0,
+      'Uncommon': 1,
+      'Common': 2
+    };
+
+    this.cards.sort((card1, card2) => {
+      return rarityTable[card1.rarity] - rarityTable[card2.rarity];
+    }); 
   }
 
 
