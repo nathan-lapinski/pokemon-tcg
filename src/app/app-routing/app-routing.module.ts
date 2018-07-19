@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
 
 const ROUTES = [
-  { path: '**', component: AppComponent}
+  { path: 'home', component: AppComponent },
+  { path: '**', component: AppComponent }
 ];
 
 @NgModule({
