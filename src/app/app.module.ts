@@ -6,10 +6,12 @@ import { PokemonCardModule } from './pokemon-card/pokemon-card.module';
 import { SharedModule } from './shared/shared.module';
 import { DeckbuilderModule } from './deckbuilder/deckbuilder.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
