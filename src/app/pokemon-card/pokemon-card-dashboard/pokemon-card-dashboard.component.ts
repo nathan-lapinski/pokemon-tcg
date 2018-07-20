@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+
 import { PokemonCardService } from '../pokemon-card.service';
 import { TestPokemonDataService } from '../test-pokemon-data.service';
 import { createRendererV1 } from '../../../../node_modules/@angular/core/src/view/refs';
-
 
 function remove(item: string, list: string[]) {
   if (list.indexOf(item) !== -1) {
@@ -20,10 +21,17 @@ export class PokemonCardDashboardComponent implements OnInit {
   // TODO: This is for testing purposes. A Dashboard may not need this property
   public cards = [];
 
-  constructor(private cardService: PokemonCardService,
+  constructor(private store: Store<any>,
+              private cardService: PokemonCardService,
               private testDataService: TestPokemonDataService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.pipe(select('pokemon-card')).subscribe(cardData => {
+      if (cardData && cardData.currentDeck) {
+        this.currentlySelectedCards = cardData.currentDeck;
+      }
+    });
+  }
 
   // TODO: This is a test function for fetching mock data. It will need to be removed.
   public fetchTestData(): void {
@@ -98,7 +106,7 @@ export class PokemonCardDashboardComponent implements OnInit {
   }
 
 
-  dropzone = [
+  currentlySelectedCards = [
   ];
 
   currentBox?: string;
@@ -106,13 +114,17 @@ export class PokemonCardDashboardComponent implements OnInit {
   // TODO: Need to rename these params. Box is the card, and toList is the array that it's being sent to
   public move(box: string, toList: string[]): void {
 
-    if (toList === this.dropzone) {
+    if (toList === this.currentlySelectedCards) {
       remove(box, this.cards);
     } else {
-      remove(box, this.dropzone);
+      remove(box, this.currentlySelectedCards);
     }
 
     toList.push(box);
+    this.store.dispatch({
+      type: 'UPDATE_CURRENT_DECK',
+      payload: this.currentlySelectedCards
+    })
   }
 
 }

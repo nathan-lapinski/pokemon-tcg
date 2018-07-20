@@ -1,5 +1,7 @@
-<h3>Info</h3>
-<app-card [card]="selectedPokemon" [width]="240" [height]="330"></app-card>
-<h4>Stats</h4>
-<h5>Name</h5>
-{{selectedPokemon.name}}
+<div *ngIf="selectedPokemon">
+  <h3>Info</h3>
+  <app-card [card]="selectedPokemon" [width]="240" [height]="330"></app-card>
+  <h4>Stats</h4>
+  <h5>Name</h5>
+  {{selectedPokemon.name}}
+</div>
