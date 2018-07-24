@@ -1,3 +1,5 @@
-<div *ngFor="let card of currentDeck">
-  <app-card [card]="card" [width]="240" [height]="330"></app-card>
-</div>
+<ul class="card-list">
+  <li *ngFor="let card of currentDeck" class="card">
+    <app-card [card]="card" [width]="60" [height]="83"></app-card>
+  </li>
+</ul>
