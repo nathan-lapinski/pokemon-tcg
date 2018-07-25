@@ -1,5 +1,13 @@
-<ul class="card-list">
-  <li *ngFor="let card of currentDeck" class="card">
-    <app-card [card]="card" [width]="60" [height]="83"></app-card>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-6">
+    <app-deck-editor [currentDeck]="currentDeck" (addCard)="addCard($event)">
+    </app-deck-editor>
+  </div>
+  <div class="col-6">
+    <ul class="card-list">
+      <li *ngFor="let card of currentDeck" class="card">
+        <app-card [card]="card" [width]="60" [height]="83"></app-card>
+      </li>
+    </ul>
+  </div>
+</div>

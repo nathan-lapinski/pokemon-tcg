@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <li *ngFor="let card of currentDeck">
+      {{card.name}}
+    </li>
+  </ul>
+</div>
+
+<button (click)="addEnergy('Water Energy')">Add Water Energy</button>
+<button (click)="addEnergy('Lightning Energy')">Add Lightning Energy</button>
+<button (click)="addEnergy('Fire Energy')">Add Fire Energy</button>
+<button (click)="addEnergy('Fighting Energy')">Add Fighting Energy</button>
+<button (click)="addEnergy('Grass Energy')">Add Grass Energy</button>
+<button (click)="addEnergy('Psychic Energy')">Add Psychic Energy</button>

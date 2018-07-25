@@ -9,9 +9,9 @@ export interface Card {
   id: number;
   name: string;
   imageUrl: string;
-  imageUrlHighRes: string;
-  subType: SubType;
-  superType: SuperType;
+  imageUrlHiRes: string;
+  subtype: SubType | string;
+  supertype: SuperType;
   ability: Ability;
   hp: number;
   number: number;
@@ -20,7 +20,7 @@ export interface Card {
   series: string;
   set: Set;
   setCode: string;
-  retreatCost: string;  
+  retreatCost: string;
   text: string;
   types: Type[];
   attacks: Attack[];

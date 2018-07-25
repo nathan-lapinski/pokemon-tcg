@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { Card } from '../models/interfaces/card';
 
 @Component({
   selector: 'app-deckbuilder-dashboard',
@@ -16,6 +17,14 @@ export class DeckbuilderDashboardComponent implements OnInit {
       if (cardData && cardData.currentDeck) {
         this.currentDeck = cardData.currentDeck;
       }
+    });
+  }
+
+  public addCard(card: Card): void {
+    this.currentDeck.push(card);
+    this.store.dispatch({
+      type: 'UPDATE_CURRENT_DECK',
+      payload: this.currentDeck
     });
   }
 

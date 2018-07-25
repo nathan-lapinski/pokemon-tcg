@@ -68,7 +68,7 @@ export class PokemonCardDashboardComponent implements OnInit {
 
     this.cards.sort((card1, card2) => {
       return superTypeTable[card1.supertype] - superTypeTable[card2.supertype];
-    }); 
+    });
   }
 
   // TODO: This is a festering pile of ineffeciency. Also, it will break with newer versions of the game, which have more color/types
@@ -102,7 +102,7 @@ export class PokemonCardDashboardComponent implements OnInit {
 
     this.cards.sort((card1, card2) => {
       return rarityTable[card1.rarity] - rarityTable[card2.rarity];
-    }); 
+    });
   }
 
 
@@ -124,7 +124,7 @@ export class PokemonCardDashboardComponent implements OnInit {
     this.store.dispatch({
       type: 'UPDATE_CURRENT_DECK',
       payload: this.currentlySelectedCards
-    })
+    });
   }
 
 }

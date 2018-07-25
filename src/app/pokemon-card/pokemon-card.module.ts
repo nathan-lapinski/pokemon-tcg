@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DraggableModule } from '../draggable/draggable.module';
 import { SelectedPokemonCardInfoComponent } from './selected-pokemon-card-info/selected-pokemon-card-info.component';
 import { DeckbuilderDashboardComponent } from './deckbuilder-dashboard/deckbuilder-dashboard.component';
+import { DeckEditorComponent } from './deck-editor/deck-editor.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { DeckbuilderDashboardComponent } from './deckbuilder-dashboard/deckbuild
     ]),
     StoreModule.forFeature('pokemon-card', reducer)
   ],
-  declarations: [PokemonCardDashboardComponent, CardComponent, SelectedPokemonCardInfoComponent, DeckbuilderDashboardComponent],
+  declarations: [PokemonCardDashboardComponent, CardComponent, SelectedPokemonCardInfoComponent, DeckbuilderDashboardComponent, DeckEditorComponent],
   exports: [PokemonCardDashboardComponent]
 })
 export class PokemonCardModule { }
